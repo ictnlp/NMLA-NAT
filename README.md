@@ -1,17 +1,16 @@
 # Non-Monotonic Latent Alignments for CTC-Based Non-Autoregressive Machine Translation
 This repository contains the official implementation of our NeurIPS 2022 paper "Non-Monotonic Latent Alignments for CTC-Based Non-Autoregressive Machine Translation". Our code is implemented based on the open-source toolkit [fairseq](https://github.com/pytorch/fairseq). We implement our training objectives in [nat_loss.py](https://github.com/ictnlp/NMLA-NAT/blob/master/fairseq/criterions/nat_loss.py).
 
-# Preliminaries
-## Requirements
+# Requirements
 This system has been tested in the following environment.
 
 + Python version = 3.8
 + Pytorch version = 1.7
 
-## Knowledge Distillation
+# Knowledge Distillation
 Knowledge distillation from an autoregressive model can effectively simplify the training data distribution. You can directly download the [distillation dataset](http://dl.fbaipublicfiles.com/nat/distill_dataset.zip), or you can follow the instructions of [training a standard transformer model](https://github.com/facebookresearch/fairseq/tree/main/examples/translation), and then decode the training set to produce a distillation dataset for NAT. 
 
-## Preprocess
+# Preprocess
 We provide the scripts for replicating the results on WMT14 En-De. For other tasks, you need to adapt some hyperparameters accordingly. First, preprocess the distillation dataset.
 ```bash
 TEXT=your_data_dir

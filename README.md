@@ -16,7 +16,7 @@ We provide the scripts for replicating the results on WMT14 En-De. For other tas
 TEXT=your_data_dir
 python preprocess.py --source-lang en --target-lang de \
    --trainpref $TEXT/train.en-de --validpref $TEXT/valid.en-de --testpref $TEXT/test.en-de \
-   --destdir data-bin/wmt14_ende_dis --workers 32 --joined-dictionary
+   --destdir data-bin/wmt14ende_dis --workers 32 --joined-dictionary
 ```
 
 # Pretrain

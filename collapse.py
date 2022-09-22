@@ -1,4 +1,4 @@
-f=open("pred.de",encoding='utf-8').readlines()
+f=open("pred.raw",encoding='utf-8').readlines()
 o=open("pred.de.collapse","w",encoding='utf-8')
 for line in f:
     words=line[:-1].split(' ')

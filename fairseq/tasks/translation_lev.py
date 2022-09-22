@@ -129,6 +129,7 @@ class TranslationLevenshteinTask(TranslationTask):
     def build_generator(self, args):
         from fairseq.iterative_refinement_generator import IterativeRefinementGenerator
         return IterativeRefinementGenerator(
+            args,
             self.target_dictionary,
             eos_penalty=getattr(args, 'iter_decode_eos_penalty', 0.0),
             max_iter=getattr(args, 'iter_decode_max_iter', 10),

@@ -10,7 +10,7 @@ This system has been tested in the following environment.
 # Knowledge Distillation
 Knowledge distillation from an autoregressive model can effectively simplify the training data distribution. You can directly download the [distillation dataset](http://dl.fbaipublicfiles.com/nat/distill_dataset.zip), or you can follow the instructions of [training a standard transformer model](https://github.com/facebookresearch/fairseq/tree/main/examples/translation), and then decode the training set to produce a distillation dataset for NAT. 
 
-#Preprocess
+# Preprocess
 We provide the scripts for replicating the results on WMT14 En-De. For other tasks, you need to adapt some hyperparameters accordingly. First, preprocess the distillation dataset.
 ```bash
 TEXT=your_data_dir
@@ -19,7 +19,7 @@ python preprocess.py --source-lang en --target-lang de \
    --destdir data-bin/wmt14_ende_dis --workers 32 --joined-dictionary
 ```
 
-#Pretrain
+# Pretrain
 Train a CTC model on the distillation dataset.
 ```bash
 data_dir=data-bin/wmt14ende_dis
@@ -49,7 +49,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py $data_dir \
 sh average.sh $save_dir
 ```
 
-#Finetune
+# Finetune
 Finetune the CTC model with the NMLA objective.
 ```bash
 model_dir=output/wmt14ende_ctc
@@ -81,7 +81,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py $data_dir \
 sh average.sh $save_dir
 ```
 
-#Deocde
+# Deocde
 We can decode the test set with argmax decoding:
 ```bash
 data_dir=data-bin/wmt14ende_dis
@@ -130,13 +130,13 @@ perl multi-bleu.perl ref.de < pred.de
 ```
 The optimal choices of alpha and beta vary among datasets and can be found by grid-search.
 
-#Other
+# Other Models
 
 To implement DDRS+NMLA, please follow the guidline in [DDRS-NAT](https://github.com/ictnlp/DDRS-NAT), where we have supported the NMLA objective there.
 
 To implement SCTC, you need to replace the pytorch source file pytorch/aten/src/ATen/native/cuda/LossCTC.cu with our file [LossCTC.cu](https://github.com/ictnlp/NMLA-NAT/blob/masterLossCTC.cu) and then recompile pytorch. After recompilation, the built-in function F.ctc_loss will become SCTC.
 
-#Citation 
+# Citation 
 If you find the resources in this repository useful, please cite as:
 
 ``` bibtex

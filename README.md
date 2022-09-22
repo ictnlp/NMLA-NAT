@@ -130,7 +130,7 @@ perl multi-bleu.perl ref.de < pred.de
 ```
 The optimal choices of alpha and beta vary among datasets and can be found by grid-search.
 
-#Other Models
+#Other
 
 To implement DDRS+NMLA, please follow the guidline in [DDRS-NAT](https://github.com/ictnlp/DDRS-NAT), where we have supported the NMLA objective there.
 

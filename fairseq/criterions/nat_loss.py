@@ -36,6 +36,9 @@ class LabelSmoothedDualImitationCriterion(FairseqCriterion):
         parser.add_argument(
             '--sctc-loss',
             action="store_true")
+        parser.add_argument(
+            '--label-smoothing',
+            default=0.,)
         # fmt: on
 
     def _custom_loss(self, loss, name="loss", factor=1.0):

@@ -103,7 +103,7 @@ class NATransformerModel(FairseqNATModel):
                 "factor": self.decoder.length_loss_factor
             }
         }
-
+    
     def forward_decoder(self, decoder_out, encoder_out, decoding_format=None, **kwargs):
         step = decoder_out.step
         output_tokens = decoder_out.output_tokens
@@ -112,25 +112,26 @@ class NATransformerModel(FairseqNATModel):
 
         # execute the decoder
         output_masks = output_tokens.ne(self.pad)
-        _scores, _tokens = self.decoder(
+        log_probs = self.decoder(
             normalize=True,
             prev_output_tokens=output_tokens,
             encoder_out=encoder_out,
             step=step,
-        ).max(-1)
+        )
+        _scores, _tokens = log_probs.max(-1)
 
         output_tokens.masked_scatter_(output_masks, _tokens[output_masks])
         output_scores.masked_scatter_(output_masks, _scores[output_masks])
         if history is not None:
             history.append(output_tokens.clone())
 
-        return decoder_out._replace(
+        return log_probs, decoder_out._replace(
             output_tokens=output_tokens,
             output_scores=output_scores,
             attn=None,
             history=history
         )
-
+    
     def initialize_output_tokens(self, encoder_out, src_tokens):
         # length prediction
         length_tgt = self.decoder.forward_length_prediction(

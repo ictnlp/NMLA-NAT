@@ -55,6 +55,7 @@ Finetune the CTC model with the NMLA objective.
 model_dir=output/wmt14ende_ctc
 data_dir=data-bin/wmt14ende_dis
 save_dir=output/wmt14ende_nmla
+mkdir $save_dir
 cp $model_dir/average-model.pt $save_dir/checkpoint_last.pt
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py $data_dir \
     --reset-optimizer --src-embedding-copy --fp16  --use-ngram --ngram-size 2 --ddp-backend=no_c10d --save-dir $save_dir \

@@ -121,7 +121,7 @@ CUDA_VISIBLE_DEVICES=0 python generate.py $data_dir \
     --task translation_lev \
     --iter-decode-max-iter  0  \
     --iter-decode-eos-penalty 0 \
-    --path $model \
+    --path $model_dir \
     --beam 1  \
     --left-pad-source False \
     --batch-size 100 > out

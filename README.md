@@ -131,6 +131,7 @@ perl multi-bleu.perl ref.de < pred.de
 The optimal choices of alpha and beta vary among datasets and can be found by grid-search.
 
 #Other Models
+
 To implement DDRS+NMLA, please follow the guidline in [DDRS-NAT](https://github.com/ictnlp/DDRS-NAT), where we have supported the NMLA objective there.
 
 To implement SCTC, you need to replace the pytorch source file pytorch/aten/src/ATen/native/cuda/LossCTC.cu with our file [LossCTC.cu](https://github.com/ictnlp/NMLA-NAT/blob/masterLossCTC.cu) and then recompile pytorch. After recompilation, the built-in function F.ctc_loss will become SCTC.

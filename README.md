@@ -1,5 +1,5 @@
 # Non-Monotonic Latent Alignments for CTC-Based Non-Autoregressive Machine Translation
-This repository contains the official implementation of our NeurIPS 2022 paper [Non-Monotonic Latent Alignments for CTC-Based Non-Autoregressive Machine Translation](https://arxiv.org/pdf/2210.03953.pdf). Our code is implemented based on the open-source toolkit [fairseq](https://github.com/pytorch/fairseq). We implement our training objectives in [nat_loss.py](https://github.com/ictnlp/NMLA-NAT/blob/master/fairseq/criterions/nat_loss.py).
+This repository contains the official implementation of our NeurIPS 2022 Spotlight paper [Non-Monotonic Latent Alignments for CTC-Based Non-Autoregressive Machine Translation](https://arxiv.org/pdf/2210.03953.pdf). Our code is implemented based on the open-source toolkit [fairseq](https://github.com/pytorch/fairseq). We implement our training objectives in [nat_loss.py](https://github.com/ictnlp/NMLA-NAT/blob/master/fairseq/criterions/nat_loss.py).
 
 # Requirements
 This system has been tested in the following environment.
